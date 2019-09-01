@@ -1,4 +1,4 @@
-filter_est <- function (m, Y, lambda, m0 = 0, filt = c("cutoff")) {
+fEst <- function (m, Y, lambda, m0 = 0, filt = c("cutoff")) {
   #' Filter estimator
   #'
   #' Computes the filter estimator with stopping index \code{m} for given data
