@@ -1,4 +1,4 @@
-fEst <- function (m, Y, lambda, m0 = 0, filt = c("cutoff")) {
+fEst <- function (m, Y, lambda, filt = c("cutoff")) {
   #' Filter estimator
   #'
   #' Computes the filter estimator with stopping index \code{m} for given data
@@ -8,16 +8,13 @@ fEst <- function (m, Y, lambda, m0 = 0, filt = c("cutoff")) {
   #' @param Y Numeric vector of observed data.
   #' @param lambda Numeric vector of decreasing, strictly positive entries of
   #'   the diagonal design matrix.
-  #' @param m0 Integer starting index.
   #' @param filt Character string giving the filter to be used.
   #'
   #' @return Returns a numeric vector estimating the underlying signal.
   #'
   #' @export
-  mu_hat <- rep(0, D)
-  if (m > 0) {
-    D <- length(Y)
-    mu_hat[1:m] <- Y[1:m] / lambda[1:m]
-  }
-  return(mu_hat) 
+  D <- length(Y)
+  muHat <- rep(0, D)
+  muHat[1:m] <- Y[1:m] / lambda[1:m]
+  return(muHat)
 }
