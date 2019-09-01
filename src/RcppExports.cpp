@@ -49,6 +49,21 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// sTime
+int sTime(NumericVector Y, NumericVector lambda, double alpha, double kappa, std::string filt);
+RcppExport SEXP _rlystop_sTime(SEXP YSEXP, SEXP lambdaSEXP, SEXP alphaSEXP, SEXP kappaSEXP, SEXP filtSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type Y(YSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type lambda(lambdaSEXP);
+    Rcpp::traits::input_parameter< double >::type alpha(alphaSEXP);
+    Rcpp::traits::input_parameter< double >::type kappa(kappaSEXP);
+    Rcpp::traits::input_parameter< std::string >::type filt(filtSEXP);
+    rcpp_result_gen = Rcpp::wrap(sTime(Y, lambda, alpha, kappa, filt));
+    return rcpp_result_gen;
+END_RCPP
+}
 // variance
 NumericVector variance(NumericVector lambda, double delta, double alpha, std::string filt);
 RcppExport SEXP _rlystop_variance(SEXP lambdaSEXP, SEXP deltaSEXP, SEXP alphaSEXP, SEXP filtSEXP) {
@@ -68,6 +83,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"_rlystop_balOracle", (DL_FUNC) &_rlystop_balOracle, 5},
     {"_rlystop_bias2", (DL_FUNC) &_rlystop_bias2, 4},
     {"_rlystop_cla_oracle", (DL_FUNC) &_rlystop_cla_oracle, 5},
+    {"_rlystop_sTime", (DL_FUNC) &_rlystop_sTime, 5},
     {"_rlystop_variance", (DL_FUNC) &_rlystop_variance, 4},
     {NULL, NULL, 0}
 };

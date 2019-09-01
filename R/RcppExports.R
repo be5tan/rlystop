@@ -56,6 +56,26 @@ cla_oracle <- function(lambda, mu, delta, alpha = -1, filt = "cutoff") {
     .Call(`_rlystop_cla_oracle`, lambda, mu, delta, alpha, filt)
 }
 
+#' Residual stopping time
+#'
+#' Computes the residual based stopping time for a given data
+#' vector \code{Y} and a given diagonal design matrix \code{lambda}.
+#'
+#' @param Y Numeric vector of observed data.
+#' @param lambda Numeric vector of decreasing, strictly positive entries of the
+#'   diagonal design matrix.
+#' @param alpha Numeric smoothing index for the residuals.
+#' @param kappa Strictly positive stopping value.
+#' @param filt Character string giving the filter to be used.
+#'
+#' @return Returns the integer value of the smoothed residual based stopping
+#'   time.
+#'
+#' @export
+sTime <- function(Y, lambda, alpha, kappa, filt = "cutoff") {
+    .Call(`_rlystop_sTime`, Y, lambda, alpha, kappa, filt)
+}
+
 #' Variance
 #' 
 #' Computes the variance of the filter estimator a given diagonal design
