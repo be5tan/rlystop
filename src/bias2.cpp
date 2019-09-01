@@ -17,7 +17,8 @@ using namespace Rcpp;
 //' @export
 // [[Rcpp::export]]
 NumericVector bias2(NumericVector lambda, NumericVector mu, double alpha
-        = -1.0, std::string filt = "cutoff") {
+        = -1.0, std::string filt = "cutoff")
+{
     int D = mu.length();
     NumericVector B2(D);
     B2[0] = sum(pow(lambda, 2 + 2 * alpha) * pow(mu, 2)) -

@@ -1,5 +1,5 @@
-library(srstop)
 context("Bias variance decomposition")
+library(rlystop)
 
 test_that("Bias-variance correctly computes oracle qunatities", {
   # Defining signals
@@ -12,12 +12,9 @@ test_that("Bias-variance correctly computes oracle qunatities", {
   mu_rough <- 250 * abs(sin(0.002 * index))*index^(-0.8)
 
   # Balanced oracles
-  bal_oracle_supersmooth <- bal_oracle(lambda, mu_supersmooth, delta)
-  # [1] 37
-  bal_oracle_smooth      <- bal_oracle(lambda, mu_smooth,      delta)
-  # [1] 445
-  bal_oracle_rough       <- bal_oracle(lambda, mu_rough,       delta)
-  # [1] 2379
+  bal_oracle_supersmooth <- bal_oracle(lambda, mu_supersmooth, delta)  # 37
+  bal_oracle_smooth      <- bal_oracle(lambda, mu_smooth,      delta)  # 445
+  bal_oracle_rough       <- bal_oracle(lambda, mu_rough,       delta)  # 2379
 
   # 1-balanced oracles
   bal_oracle_supersmooth_1 <- bal_oracle(lambda, mu_supersmooth, delta, alpha = 1)
