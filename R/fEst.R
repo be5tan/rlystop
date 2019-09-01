@@ -1,4 +1,4 @@
-filter_est <- function (m, Y, lambda, filt = c("cutoff")) {
+filter_est <- function (m, Y, lambda, m0, filt = c("cutoff")) {
   #' Filter estimator
   #'
   #' Computes the filter estimator with stopping index \code{m} for given data
@@ -8,6 +8,7 @@ filter_est <- function (m, Y, lambda, filt = c("cutoff")) {
   #' @param Y Numeric vector of observed data.
   #' @param lambda Numeric vector of decreasing, strictly positive entries of
   #'   the diagonal design matrix.
+  #' @param m0 Integer starting index.
   #' @param filt Character string giving the filter to be used.
   #'
   #' @return Returns a numeric vector estimating the underlying signal.
