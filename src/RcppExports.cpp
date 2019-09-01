@@ -5,9 +5,9 @@
 
 using namespace Rcpp;
 
-// balOracl
-int balOracl(NumericVector lambda, NumericVector mu, double delta, double alpha, std::string filt);
-RcppExport SEXP _rlystop_balOracl(SEXP lambdaSEXP, SEXP muSEXP, SEXP deltaSEXP, SEXP alphaSEXP, SEXP filtSEXP) {
+// balOracle
+int balOracle(NumericVector lambda, NumericVector mu, double delta, double alpha, std::string filt);
+RcppExport SEXP _rlystop_balOracle(SEXP lambdaSEXP, SEXP muSEXP, SEXP deltaSEXP, SEXP alphaSEXP, SEXP filtSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -16,7 +16,7 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< double >::type delta(deltaSEXP);
     Rcpp::traits::input_parameter< double >::type alpha(alphaSEXP);
     Rcpp::traits::input_parameter< std::string >::type filt(filtSEXP);
-    rcpp_result_gen = Rcpp::wrap(balOracl(lambda, mu, delta, alpha, filt));
+    rcpp_result_gen = Rcpp::wrap(balOracle(lambda, mu, delta, alpha, filt));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -65,7 +65,7 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_rlystop_balOracl", (DL_FUNC) &_rlystop_balOracl, 5},
+    {"_rlystop_balOracle", (DL_FUNC) &_rlystop_balOracle, 5},
     {"_rlystop_bias2", (DL_FUNC) &_rlystop_bias2, 4},
     {"_rlystop_cla_oracle", (DL_FUNC) &_rlystop_cla_oracle, 5},
     {"_rlystop_variance", (DL_FUNC) &_rlystop_variance, 4},

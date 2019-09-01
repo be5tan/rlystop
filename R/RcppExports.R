@@ -15,8 +15,8 @@
 #' @return Returns the strong balanced oracle time as an integer.
 #'
 #' @export
-balOracl <- function(lambda, mu, delta, alpha = -1.0, filt = "cutoff") {
-    .Call(`_rlystop_balOracl`, lambda, mu, delta, alpha, filt)
+balOracle <- function(lambda, mu, delta, alpha = -1.0, filt = "cutoff") {
+    .Call(`_rlystop_balOracle`, lambda, mu, delta, alpha, filt)
 }
 
 #' Squared bias

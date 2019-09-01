@@ -16,7 +16,7 @@ using namespace Rcpp;
 //'
 //' @export
 // [[Rcpp::export]]
-int balOracl(NumericVector lambda, NumericVector mu, double delta, double alpha
+int balOracle(NumericVector lambda, NumericVector mu, double delta, double alpha
         = -1.0, std::string filt = "cutoff")
 {
     int D = lambda.length();
