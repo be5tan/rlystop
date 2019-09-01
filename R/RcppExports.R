@@ -26,6 +26,7 @@ bias2 <- function(lambda, mu, alpha = -1.0, filt = "cutoff") {
 #'
 #' @param lambda Vector of decreasing, strictly positive entries of the
 #'   diagonal design matrix.
+#' @param delta Numeric noise level.
 #' @param alpha Numeric smoothing parameter.
 #' @param filt Character string giving the filter to be used.
 #'

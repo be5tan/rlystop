@@ -8,6 +8,7 @@ using namespace Rcpp;
 //'
 //' @param lambda Vector of decreasing, strictly positive entries of the
 //'   diagonal design matrix.
+//' @param delta Numeric noise level.
 //' @param alpha Numeric smoothing parameter.
 //' @param filt Character string giving the filter to be used.
 //'
@@ -16,7 +17,8 @@ using namespace Rcpp;
 //' @export
 // [[Rcpp::export]]
 NumericVector variance(NumericVector lambda, double delta, double alpha = -1.0,
-        std::string filt = "cutoff") {
+        std::string filt = "cutoff")
+{
     int D = lambda.length();
     NumericVector V(D);
     V[0] = pow(lambda[0], 2 * alpha) * pow(delta, 2);

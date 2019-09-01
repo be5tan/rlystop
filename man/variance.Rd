@@ -10,6 +10,8 @@ variance(lambda, delta, alpha = -1, filt = "cutoff")
 \item{lambda}{Vector of decreasing, strictly positive entries of the
 diagonal design matrix.}
 
+\item{delta}{Numeric noise level.}
+
 \item{alpha}{Numeric smoothing parameter.}
 
 \item{filt}{Character string giving the filter to be used.}
