@@ -34,9 +34,9 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
-// cla_oracle
-int cla_oracle(NumericVector lambda, NumericVector mu, double delta, double alpha, std::string filt);
-RcppExport SEXP _rlystop_cla_oracle(SEXP lambdaSEXP, SEXP muSEXP, SEXP deltaSEXP, SEXP alphaSEXP, SEXP filtSEXP) {
+// claOracle
+int claOracle(NumericVector lambda, NumericVector mu, double delta, double alpha, std::string filt);
+RcppExport SEXP _rlystop_claOracle(SEXP lambdaSEXP, SEXP muSEXP, SEXP deltaSEXP, SEXP alphaSEXP, SEXP filtSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -45,7 +45,20 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< double >::type delta(deltaSEXP);
     Rcpp::traits::input_parameter< double >::type alpha(alphaSEXP);
     Rcpp::traits::input_parameter< std::string >::type filt(filtSEXP);
-    rcpp_result_gen = Rcpp::wrap(cla_oracle(lambda, mu, delta, alpha, filt));
+    rcpp_result_gen = Rcpp::wrap(claOracle(lambda, mu, delta, alpha, filt));
+    return rcpp_result_gen;
+END_RCPP
+}
+// landw
+NumericVector landw(int m, NumericVector Y, NumericVector lambda);
+RcppExport SEXP _rlystop_landw(SEXP mSEXP, SEXP YSEXP, SEXP lambdaSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< int >::type m(mSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type Y(YSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type lambda(lambdaSEXP);
+    rcpp_result_gen = Rcpp::wrap(landw(m, Y, lambda));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -82,7 +95,8 @@ END_RCPP
 static const R_CallMethodDef CallEntries[] = {
     {"_rlystop_balOracle", (DL_FUNC) &_rlystop_balOracle, 5},
     {"_rlystop_bias2", (DL_FUNC) &_rlystop_bias2, 4},
-    {"_rlystop_cla_oracle", (DL_FUNC) &_rlystop_cla_oracle, 5},
+    {"_rlystop_claOracle", (DL_FUNC) &_rlystop_claOracle, 5},
+    {"_rlystop_landw", (DL_FUNC) &_rlystop_landw, 3},
     {"_rlystop_sTime", (DL_FUNC) &_rlystop_sTime, 5},
     {"_rlystop_variance", (DL_FUNC) &_rlystop_variance, 4},
     {NULL, NULL, 0}

@@ -52,8 +52,23 @@ bias2 <- function(lambda, mu, alpha = -1.0, filt = "cutoff") {
 #' @return Returns the classical oracle time as an integer.
 #'
 #' @export
-cla_oracle <- function(lambda, mu, delta, alpha = -1, filt = "cutoff") {
-    .Call(`_rlystop_cla_oracle`, lambda, mu, delta, alpha, filt)
+claOracle <- function(lambda, mu, delta, alpha = -1, filt = "cutoff") {
+    .Call(`_rlystop_claOracle`, lambda, mu, delta, alpha, filt)
+}
+
+#' Landweber iteration
+#'
+#' Computes the Landweber iteration for a diagon
+#' 
+#' @param m Integer stopping index. 
+#' @param Y Numeric vector of observed data.
+#' @param lambda Numeric vector of decreasing, strictly positive entries of
+#'   the diagonal design matrix.
+#'
+#' @return Returns the m-th iterate of the Landweber iteration.
+#'
+landw <- function(m, Y, lambda) {
+    .Call(`_rlystop_landw`, m, Y, lambda)
 }
 
 #' Residual stopping time

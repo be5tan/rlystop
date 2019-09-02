@@ -2,7 +2,7 @@
 
 export(balOracle)
 export(bias2)
-export(cla_oracle)
+export(claOracle)
 export(fEst)
 export(sTime)
 export(variance)

@@ -17,7 +17,7 @@ using namespace Rcpp;
 //'
 //' @export
 // [[Rcpp::export]]
-int cla_oracle(NumericVector lambda, NumericVector mu, double delta, double
+int claOracle(NumericVector lambda, NumericVector mu, double delta, double
         alpha = -1, std::string filt = "cutoff") {
     int m_amin = 0;
     int D = mu.length();
