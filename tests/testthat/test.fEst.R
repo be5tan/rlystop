@@ -11,3 +11,10 @@ test_that("elementary cuf-off estimation works", {
   }
 })
 
+test_that("elementary Landweber estimation works", {
+  D <- 10
+  lambda <- rep(1, D)
+  mu <- rnorm(D, 0, 1)
+  Y <- lambda * mu
+  expect_equal(fEst(15, Y, lambda, "landw"), mu)
+})

@@ -13,8 +13,14 @@ fEst <- function (m, Y, lambda, filt = c("cutoff")) {
   #' @return Returns a numeric vector estimating the underlying signal.
   #'
   #' @export
-  D <- length(Y)
-  muHat <- rep(0, D)
-  muHat[1:m] <- Y[1:m] / lambda[1:m]
+  if (filt == "cutoff") {
+    # TODO: Mishandles the case m = 0
+    D <- length(Y)
+    muHat <- rep(0, D)
+    muHat[1:m] <- Y[1:m] / lambda[1:m]
+  }
+  if(filt == "landw") {
+    muHat <- landw(m, Y, lambda)
+  } 
   return(muHat)
 }
