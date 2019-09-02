@@ -19,24 +19,6 @@ balOracle <- function(lambda, mu, delta, alpha = -1.0, filt = "cutoff") {
     .Call(`_rlystop_balOracle`, lambda, mu, delta, alpha, filt)
 }
 
-#' Squared bias
-#' 
-#' Computes the squared bias of the filter estimator a given diagonal design
-#' matrix \code{lambda} and signal ' \code{mu}.
-#'
-#' @param lambda Vector of decreasing, strictly positive entries of the
-#'   diagonal design matrix.
-#' @param mu Vector valued input signal. 
-#' @param alpha Numeric smoothing parameter.
-#' @param filt Character string giving the filter to be used.
-#'
-#' @return Returns all values of the squared bias in a double vector.
-#'
-#' @export
-bias2 <- function(lambda, mu, alpha = -1.0, filt = "cutoff") {
-    .Call(`_rlystop_bias2`, lambda, mu, alpha, filt)
-}
-
 #' Classical oracle
 #'
 #' Computes the classical oracle time.
@@ -89,23 +71,5 @@ landw <- function(m, Y, lambda) {
 #' @export
 sTime <- function(Y, lambda, alpha, kappa, filt = "cutoff") {
     .Call(`_rlystop_sTime`, Y, lambda, alpha, kappa, filt)
-}
-
-#' Variance
-#' 
-#' Computes the variance of the filter estimator a given diagonal design
-#' matrix \code{lambda} and noise level delta.
-#'
-#' @param lambda Vector of decreasing, strictly positive entries of the
-#'   diagonal design matrix.
-#' @param delta Numeric noise level.
-#' @param alpha Numeric smoothing parameter.
-#' @param filt Character string giving the filter to be used.
-#'
-#' @return Returns all values of the variancee in a double vector.
-#'
-#' @export
-variance <- function(lambda, delta, alpha = -1.0, filt = "cutoff") {
-    .Call(`_rlystop_variance`, lambda, delta, alpha, filt)
 }
 
