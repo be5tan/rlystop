@@ -22,4 +22,5 @@ variance <- function(m, lambda, delta, alpha = - 1, filt = c("cutoff")) {
     smoothingTerm <- lambda^(2 * alpha)
     Vm  <- sum(filterTerm * smoothingTerm) * delta^2 
   }
+  return(Vm)
 }

@@ -1,7 +1,7 @@
 context("Bias variance decomposition")
 library(rlystop)
 
-test_that("Bias-variance correctly computes oracle qunatities", {
+test_that("Bias-variance correctly computes oracle quantities", {
   # Defining signals
   D <- 10000
   index <- seq(1, D, 1)
@@ -20,18 +20,18 @@ test_that("Bias-variance correctly computes oracle qunatities", {
   balOracle_supersmooth_1 <- balOracle(lambda, muSupersmooth, delta, 1)  # 28
   balOracle_smooth_1      <- balOracle(lambda, muSmooth,      delta, 1)  # 202
   balOracle_rough_1       <- balOracle(lambda, muRough,       delta, 1)  # 706
-  
-  # Bias-variance decomposition
-  B2_supersmooth <- bias2(lambda, muSupersmooth)
-  B2_smooth      <- bias2(lambda, muSmooth)
-  B2_rough       <- bias2(lambda, muRough)
-  V              <- variance(lambda, delta)
 
-  # 1-Bias-variance decomposition
-  B2_supersmooth_1 <- bias2(lambda, muSupersmooth, alpha = 1)
-  B2_smooth_1      <- bias2(lambda, muSmooth,      alpha = 1)
-  B2_rough_1       <- bias2(lambda, muRough,       alpha = 1)
-  V_1              <- variance(lambda, delta, alpha = 1)
+  # Bias-variance decomposition
+  B2_supersmooth <- sapply(index, bias2,    lambda = lambda, mu = muSupersmooth)
+  B2_smooth      <- sapply(index, bias2,    lambda = lambda, mu = muSmooth)
+  B2_rough       <- sapply(index, bias2,    lambda = lambda, mu = muRough)
+  V              <- sapply(index, variance, lambda = lambda, delta = delta)
+
+  # # 1-Bias-variance decomposition
+  B2_supersmooth_1 <- sapply(index, bias2,    lambda = lambda, mu    = muSupersmooth, alpha = 1)
+  B2_smooth_1      <- sapply(index, bias2,    lambda = lambda, mu    = muSmooth,      alpha = 1)
+  B2_rough_1       <- sapply(index, bias2,    lambda = lambda, mu    = muRough,       alpha = 1)
+  V_1              <- sapply(index, variance, lambda = lambda, delta = delta,         alpha = 1)
 
   # Check defining properties of the balanced oracles
   m <- balOracle_supersmooth

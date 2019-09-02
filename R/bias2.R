@@ -15,6 +15,7 @@ bias2 <- function(m, lambda, mu, alpha = - 1, filt = c("cutoff")) {
   #'
   #' @export
   if (filt == "cutoff") {
+    D <- length(mu) 
     B2m <- sum(lambda[(m + 1):D]^(2 + 2 * alpha) * mu[(m + 1):D]^2)
   }
   if (filt == "landw") {
