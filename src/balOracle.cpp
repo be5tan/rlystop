@@ -21,13 +21,32 @@ int balOracle(NumericVector lambda, NumericVector mu, double delta, double alpha
 {
     int D = lambda.length();
     int m = 0;
-    double B2_m_alpha = sum(pow(lambda, 2 + 2 * alpha) * pow(mu, 2));
-    double V_m_alpha = 0;
-    while (V_m_alpha < B2_m_alpha) {
-       V_m_alpha += pow(lambda[m], 2 * alpha) * pow(delta, 2);
-       B2_m_alpha = sum(pow(lambda[Range(m + 1, D - 1)], 2 + 2 * alpha) *
-               pow(mu[Range(m + 1, D - 1)], 2));
-       m += 1;
+    if (filt == "cutoff") {
+        double B2_m_alpha = sum(pow(lambda, 2 + 2 * alpha) * pow(mu, 2));
+        double V_m_alpha = 0;
+        while (V_m_alpha < B2_m_alpha) {
+           V_m_alpha += pow(lambda[m], 2 * alpha) * pow(delta, 2);
+           B2_m_alpha = sum(pow(lambda[Range(m + 1, D - 1)], 2 + 2 * alpha) *
+                   pow(mu[Range(m + 1, D - 1)], 2));
+           m += 1;
+        }
+    }
+    if (filt == "landw") {
+        NumericVector auxFilterTerm(D);
+        NumericVector biasFilterTerm(D);
+        NumericVector varFilterTerm(D);
+        NumericVector biasSmoothingTerm = pow(lambda, 2 + 2 * alpha);
+        NumericVector varSmoothingTerm = pow(lambda, 2 * alpha);
+        double B2_m_alpha = sum(biasSmoothingTerm * pow(mu, 2));
+        double V_m_alpha = 0;
+        while (V_m_alpha < B2_m_alpha) {
+            auxFilterTerm  = auxFilterTerm * (1 - lambda);
+            biasFilterTerm = pow(auxFilterTerm, 2);
+            varFilterTerm  = pow(1 - auxFilterTerm, 2);
+            V_m_alpha  = sum(varFilterTerm * varSmoothingTerm) * pow(delta, 2);
+            B2_m_alpha = sum(biasFilterTerm * biasSmoothingTerm * pow(mu, 2));
+            m += 1;
+        }
     }
     return(m);
 }
