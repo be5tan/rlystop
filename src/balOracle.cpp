@@ -32,7 +32,7 @@ int balOracle(NumericVector lambda, NumericVector mu, double delta, double alpha
         }
     }
     if (filt == "landw") {
-        NumericVector auxFilterTerm(D);
+        NumericVector auxFilterTerm(D, 1.0);
         NumericVector biasFilterTerm(D);
         NumericVector varFilterTerm(D);
         NumericVector biasSmoothingTerm = pow(lambda, 2 + 2 * alpha);
@@ -40,7 +40,8 @@ int balOracle(NumericVector lambda, NumericVector mu, double delta, double alpha
         double B2_m_alpha = sum(biasSmoothingTerm * pow(mu, 2));
         double V_m_alpha = 0;
         while (V_m_alpha < B2_m_alpha) {
-            auxFilterTerm  = auxFilterTerm * (1 - lambda);
+            // auxFilterTerm  = auxFilterTerm * (1 - pow(lambda, 2));
+            auxFilterTerm  = pow(1 - pow(lambda, 2), m + 1);
             biasFilterTerm = pow(auxFilterTerm, 2);
             varFilterTerm  = pow(1 - auxFilterTerm, 2);
             V_m_alpha  = sum(varFilterTerm * varSmoothingTerm) * pow(delta, 2);
