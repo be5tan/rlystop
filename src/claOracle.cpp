@@ -25,15 +25,38 @@ int claOracle(NumericVector lambda, NumericVector mu, double delta, double
     NumericVector B2 (D);
     NumericVector V (D);
     NumericVector MSE (D);
-    B2[0] = sum(pow(lambda[Range(1, D - 1)], 2 + 2 * alpha) * pow(mu[Range(1, D - 1)], 2));
-    V[0] = delta2 * pow(lambda[0], 2 * alpha);
-    MSE[0] = B2[0] + V[0];
-    for (int m = 1; m < D; m++) {
-        V[m] = V[m - 1] + pow(lambda[m], 2 * alpha) * delta2;
-        B2[m] = B2[m - 1] - pow(lambda[m], 2 + 2 * alpha) * pow(mu[m], 2);
-        MSE[m] = B2[m] + V[m];
-        if (MSE[m] < MSE[m_amin]) {
-            m_amin = m;
+    if (filt == "cutoff") {
+        B2[0] = sum(pow(lambda[Range(1, D - 1)], 2 + 2 * alpha) * pow(mu[Range(1, D - 1)], 2));
+        V[0] = delta2 * pow(lambda[0], 2 * alpha);
+        MSE[0] = B2[0] + V[0];
+        for (int m = 1; m < D; m++) {
+            V[m] = V[m - 1] + pow(lambda[m], 2 * alpha) * delta2;
+            B2[m] = B2[m - 1] - pow(lambda[m], 2 + 2 * alpha) * pow(mu[m], 2);
+            MSE[m] = B2[m] + V[m];
+            if (MSE[m] < MSE[m_amin]) {
+                m_amin = m;
+            }
+        }
+    }
+    if (filt == "landw") {
+        NumericVector auxFilterTerm = 1 - pow(lambda, 2);
+        NumericVector biasFilterTerm = pow(auxFilterTerm, 2);
+        NumericVector varFilterTerm  = pow(1 - auxFilterTerm, 2);
+        NumericVector biasSmoothingTerm = pow(lambda, 2 + 2 * alpha);
+        NumericVector varSmoothingTerm = pow(lambda, 2 * alpha);
+        B2[0] = sum(biasFilterTerm * biasSmoothingTerm * pow(mu, 2));
+        V[0]  = sum(varFilterTerm  * varSmoothingTerm) * pow(delta, 2);
+        MSE[0] = B2[0] + V[0];
+        for (int m = 1; m < D; m++) {
+            auxFilterTerm  = auxFilterTerm * (1 - pow(lambda, 2));
+            biasFilterTerm = pow(auxFilterTerm, 2);
+            varFilterTerm  = pow(1 - auxFilterTerm, 2);
+            B2[m]  = sum(biasFilterTerm * biasSmoothingTerm * pow(mu, 2));
+            V[m]   = sum(varFilterTerm * varSmoothingTerm) * pow(delta, 2);
+            MSE[m] = B2[m] + V[m];
+            if (MSE[m] < MSE[m_amin]) {
+                m_amin = m;
+            }
         }
     }
     return(m_amin + 1);

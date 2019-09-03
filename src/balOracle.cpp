@@ -40,8 +40,8 @@ int balOracle(NumericVector lambda, NumericVector mu, double delta, double alpha
         double B2_m_alpha = sum(biasSmoothingTerm * pow(mu, 2));
         double V_m_alpha = 0;
         while (V_m_alpha < B2_m_alpha) {
-            // auxFilterTerm  = auxFilterTerm * (1 - pow(lambda, 2));
-            auxFilterTerm  = pow(1 - pow(lambda, 2), m + 1);
+            auxFilterTerm  = auxFilterTerm * (1 - pow(lambda, 2));
+            // auxFilterTerm  = pow(1 - pow(lambda, 2), m + 1);
             biasFilterTerm = pow(auxFilterTerm, 2);
             varFilterTerm  = pow(1 - auxFilterTerm, 2);
             V_m_alpha  = sum(varFilterTerm * varSmoothingTerm) * pow(delta, 2);
