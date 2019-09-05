@@ -37,7 +37,7 @@ int sTime(NumericVector Y, NumericVector lambda, double alpha, double kappa,
     if (filt == "landw") {
     while (residuals2 > kappa) {
            muHat += lambda * (Y - lambda * muHat); 
-           residuals2 = sum(smoothingTerm * pow(Y - muHat, 2));
+           residuals2 = sum(smoothingTerm * pow(Y - lambda * muHat, 2));
            tau += 1;
     }
     }
