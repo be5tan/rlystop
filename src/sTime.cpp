@@ -23,11 +23,23 @@ int sTime(NumericVector Y, NumericVector lambda, double alpha, double kappa,
 {
     int tau = 0;
     int D = Y.length();
-    double residuals2 = sum(pow(lambda[Range(tau, D - 1)], 2 * alpha) *
-            pow(Y[Range(tau, D - 1)], 2));
+    NumericVector muHat(D, 0.0);
+    NumericVector smoothingTerm = pow(lambda, 2 * alpha);
+    double residuals2 = sum(smoothingTerm * pow(Y, 2));
+    // double residuals2 = sum(pow(lambda[Range(tau, D - 1)], 2 * alpha) *
+    //         pow(Y[Range(tau, D - 1)], 2));
+    if (filt == "cutoff") {
+        while (residuals2 > kappa) {
+            residuals2 -= pow(lambda[tau], 2 * alpha) * pow(Y[tau], 2);
+            tau += 1;
+        }
+    }
+    if (filt == "landw") {
     while (residuals2 > kappa) {
-        residuals2 -= pow(lambda[tau], 2 * alpha) * pow(Y[tau], 2);
-        tau += 1;
+           muHat += lambda * (Y - lambda * muHat); 
+           residuals2 = sum(smoothingTerm * pow(Y - muHat, 2));
+           tau += 1;
+    }
     }
     return(tau);
 }
