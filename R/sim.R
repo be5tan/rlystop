@@ -33,11 +33,19 @@ sim <- function (N, lambda, mu, delta, alpha, kappa, filt = c("cutoff"), m0 = 0,
     Y <- lambda * mu + delta * eps 
 
     tau <- sTime(Y, lambda, alpha, kappa, filt)
+    if (tau < m0) {
+      AIC <- rep(0, m0)
+      for (m in 1:m0) {
+        AIC[m] <- aic(m, Y, lambda, delta, alphaLoss, filt)
+      }
+      tau2Step <- which.min(AIC)
+      muHat <- fEst(tau2Step, Y, lambda, filt)
+    } else {
+      muHat <- fEst(tau, Y, lambda, filt)
+    }
     stoppingTime[iter] <- tau
-    muHat <- fEst(tau, Y, lambda, filt)
-    loss[iter] <- sum(lambda^(1 + alphaLoss) * (muHat - mu)^2)
+    loss[iter] <- sum(lambda^(2 + 2 * alphaLoss) * (muHat - mu)^2)
   }
   df <- data.frame(stoppingTime, loss)
-
   return(df)
 }
