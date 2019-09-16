@@ -4,7 +4,7 @@
 \alias{variance}
 \title{Variance}
 \usage{
-variance(m, lambda, delta, alpha = -1, filt = c("cutoff"))
+variance(m, lambda, delta, alpha = -1, filt = c("cutoff", "landw"))
 }
 \arguments{
 \item{m}{Integer stopping index.}

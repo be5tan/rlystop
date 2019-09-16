@@ -19,12 +19,17 @@ using namespace Rcpp;
 // [[Rcpp::export]]
 int claOracle(NumericVector lambda, NumericVector mu, double delta, double
         alpha = -1, std::string filt = "cutoff") {
+    if (filt != "cutoff" && filt != "landw") {
+      Rcout << "Error: filt should be one of \"cutoff\", \"landw\"" << std::endl;
+    }
+
     int m_amin = 0;
     int D = mu.length();
     double delta2 = pow(delta, 2);
     NumericVector B2 (D);
     NumericVector V (D);
     NumericVector MSE (D);
+
     if (filt == "cutoff") {
         B2[0] = sum(pow(lambda[Range(1, D - 1)], 2 + 2 * alpha) * pow(mu[Range(1, D - 1)], 2));
         V[0] = delta2 * pow(lambda[0], 2 * alpha);
@@ -38,6 +43,7 @@ int claOracle(NumericVector lambda, NumericVector mu, double delta, double
             }
         }
     }
+
     if (filt == "landw") {
         NumericVector auxFilterTerm = 1 - pow(lambda, 2);
         NumericVector biasFilterTerm = pow(auxFilterTerm, 2);
@@ -59,5 +65,6 @@ int claOracle(NumericVector lambda, NumericVector mu, double delta, double
             }
         }
     }
+
     return(m_amin + 1);
 }

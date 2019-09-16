@@ -1,4 +1,4 @@
-aic <- function(m, lambda, delta, alphaLoss = - 1, filt = c("cutoff")) {
+aic <- function(m, Y, lambda, delta, alphaLoss = - 1, filt = c("cutoff", "landw")) {
   #' Akaike information criterion
   #' 
   #' Computes the AIC of the \code{m}-th filter estimator.
@@ -13,6 +13,8 @@ aic <- function(m, lambda, delta, alphaLoss = - 1, filt = c("cutoff")) {
   #' @return Returns the value of the squared bias at index \code{m}.
   #'
   #' @export
+  filt <- match.arg(filt)
+
   muHat <- fEst(m, Y, lambda, filt)
   rss <- sum(lambda^(2 + 2 * alphaLoss) * (Y - lambda * muHat)^2)
   aic <- rss + 2 * variance(m, lambda, delta, alphaLoss, filt)

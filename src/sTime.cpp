@@ -21,6 +21,10 @@ using namespace Rcpp;
 int sTime(NumericVector Y, NumericVector lambda, double alpha, double kappa,
         std::string filt = "cutoff")
 {
+    if (filt != "cutoff" && filt != "landw") {
+      Rcout << "Error: filt should be one of \"cutoff\", \"landw\"" << std::endl;
+    }
+
     int tau = 0;
     int D = Y.length();
     NumericVector muHat(D, 0.0);
@@ -28,18 +32,21 @@ int sTime(NumericVector Y, NumericVector lambda, double alpha, double kappa,
     double residuals2 = sum(smoothingTerm * pow(Y, 2));
     // double residuals2 = sum(pow(lambda[Range(tau, D - 1)], 2 * alpha) *
     //         pow(Y[Range(tau, D - 1)], 2));
+
     if (filt == "cutoff") {
         while (residuals2 > kappa) {
             residuals2 -= pow(lambda[tau], 2 * alpha) * pow(Y[tau], 2);
             tau += 1;
         }
     }
+
     if (filt == "landw") {
-    while (residuals2 > kappa) {
-           muHat += lambda * (Y - lambda * muHat); 
-           residuals2 = sum(smoothingTerm * pow(Y - lambda * muHat, 2));
-           tau += 1;
+        while (residuals2 > kappa) {
+               muHat += lambda * (Y - lambda * muHat);
+               residuals2 = sum(smoothingTerm * pow(Y - lambda * muHat, 2));
+               tau += 1;
+        }
     }
-    }
+
     return(tau);
 }

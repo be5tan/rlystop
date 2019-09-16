@@ -1,4 +1,4 @@
-bias2 <- function(m, lambda, mu, alpha = - 1, filt = c("cutoff")) {
+bias2 <- function(m, lambda, mu, alpha = - 1, filt = c("cutoff", "landw")) {
   #' Squared bias
   #' 
   #' Computes the squared bias of the filter estimator a given diagonal design
@@ -14,14 +14,18 @@ bias2 <- function(m, lambda, mu, alpha = - 1, filt = c("cutoff")) {
   #' @return Returns the value of the squared bias at index \code{m}.
   #'
   #' @export
+  filt <- match.arg(filt)
+
   if (filt == "cutoff") {
     D <- length(mu) 
     B2m <- sum(lambda[(m + 1):D]^(2 + 2 * alpha) * mu[(m + 1):D]^2)
   }
+
   if (filt == "landw") {
     filterTerm <- (1 - lambda^2)^(2 * m)
     smoothingTerm <- lambda^(2 + 2 * alpha)
     B2m <- sum(filterTerm * smoothingTerm * mu^2)
   }
+
   return(B2m)
 }

@@ -1,13 +1,13 @@
 #include <Rcpp.h>
 using namespace Rcpp;
 
-//' Balanced oracle 
-//' 
-//' Computes the balanced oracle time. 
+//' Balanced oracle
+//'
+//' Computes the balanced oracle time.
 //'
 //' @param lambda Vector of decreasing, strictly positive entries of the
 //'   diagonal design matrix.
-//' @param mu Vector valued input signal. 
+//' @param mu Vector valued input signal.
 //' @param delta Strictly positive level of random noise.
 //' @param alpha Numeric smoothing parameter.
 //' @param filt Character string giving the filter to be used.
@@ -19,8 +19,13 @@ using namespace Rcpp;
 int balOracle(NumericVector lambda, NumericVector mu, double delta, double alpha
         = -1.0, std::string filt = "cutoff")
 {
+    if (filt != "cutoff" && filt != "landw") {
+      Rcout << "Error: filt should be one of \"cutoff\", \"landw\"" << std::endl;
+    }
+
     int D = lambda.length();
     int m = 0;
+
     if (filt == "cutoff") {
         double B2_m_alpha = sum(pow(lambda, 2 + 2 * alpha) * pow(mu, 2));
         double V_m_alpha = 0;
@@ -31,6 +36,7 @@ int balOracle(NumericVector lambda, NumericVector mu, double delta, double alpha
            m += 1;
         }
     }
+
     if (filt == "landw") {
         NumericVector auxFilterTerm(D, 1.0);
         NumericVector biasFilterTerm(D);
@@ -49,5 +55,6 @@ int balOracle(NumericVector lambda, NumericVector mu, double delta, double alpha
             m += 1;
         }
     }
+
     return(m);
 }

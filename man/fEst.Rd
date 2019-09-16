@@ -4,7 +4,7 @@
 \alias{fEst}
 \title{Filter estimator}
 \usage{
-fEst(m, Y, lambda, filt = c("cutoff"))
+fEst(m, Y, lambda, filt = c("cutoff", "landw"))
 }
 \arguments{
 \item{m}{Integer stopping index.}

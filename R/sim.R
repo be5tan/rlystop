@@ -1,5 +1,5 @@
-sim <- function (N, lambda, mu, delta, alpha, kappa, filt = c("cutoff"), m0 = 0,
-                 alphaLoss = - 1) {
+sim <- function (N, lambda, mu, delta, alpha, kappa, filt = 
+                 c("cutoff", "landw"), m0 = 0, alphaLoss = - 1) {
   #' Monte Carlo simulation for the filter estimation
   #' 
   #' Performs \code{num_run} simulation runs of the filter estimation
@@ -46,6 +46,7 @@ sim <- function (N, lambda, mu, delta, alpha, kappa, filt = c("cutoff"), m0 = 0,
     stoppingTime[iter] <- tau
     loss[iter] <- sum(lambda^(2 + 2 * alphaLoss) * (muHat - mu)^2)
   }
+
   df <- data.frame(stoppingTime, loss)
   return(df)
 }

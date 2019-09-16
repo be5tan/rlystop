@@ -4,8 +4,8 @@
 \alias{sim}
 \title{Monte Carlo simulation for the filter estimation}
 \usage{
-sim(N, lambda, mu, delta, alpha, kappa, filt = c("cutoff"), m0 = 0,
-  alphaLoss = -1)
+sim(N, lambda, mu, delta, alpha, kappa, filt = c("cutoff", "landw"),
+  m0 = 0, alphaLoss = -1)
 }
 \arguments{
 \item{N}{Integer number of simulation runs.}

@@ -4,7 +4,7 @@
 \alias{aic}
 \title{Akaike information criterion}
 \usage{
-aic(m, lambda, delta, alphaLoss = -1, filt = c("cutoff"))
+aic(m, Y, lambda, delta, alphaLoss = -1, filt = c("cutoff", "landw"))
 }
 \arguments{
 \item{m}{Integer stopping index.}
@@ -14,9 +14,9 @@ diagonal design matrix.}
 
 \item{delta}{Numeric noise level.}
 
-\item{filt}{Character string giving the filter to be used.}
+\item{alphaLoss}{Numeric smoothing parameter for the loss.}
 
-\item{alpha}{Numeric smoothing parameter.}
+\item{filt}{Character string giving the filter to be used.}
 }
 \value{
 Returns the value of the squared bias at index \code{m}.

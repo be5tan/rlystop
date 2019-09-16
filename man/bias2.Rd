@@ -4,7 +4,7 @@
 \alias{bias2}
 \title{Squared bias}
 \usage{
-bias2(m, lambda, mu, alpha = -1, filt = c("cutoff"))
+bias2(m, lambda, mu, alpha = -1, filt = c("cutoff", "landw"))
 }
 \arguments{
 \item{m}{Integer stopping index.}
