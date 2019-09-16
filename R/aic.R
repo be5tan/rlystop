@@ -4,6 +4,7 @@ aic <- function(m, Y, lambda, delta, alphaLoss = - 1, filt = c("cutoff", "landw"
   #' Computes the AIC of the \code{m}-th filter estimator.
   #'
   #' @param m Integer stopping index.
+  #' @param Y Numeric vector of observed data.
   #' @param lambda Vector of decreasing, strictly positive entries of the
   #'   diagonal design matrix.
   #' @param delta Numeric noise level.

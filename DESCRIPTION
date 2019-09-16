@@ -1,12 +1,11 @@
 Package: rlystop
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Early stopping for statistical inverse problems
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Authors@R: person("Bernhard", "Stankewitz", email = "bernhard.stankewitz@posteo.de", role = c("aut", "cre"))
+Description: Implements the estimation procedures from three different papers on
+    early stopping for statistical inverse problems.
+License: GPL-2
 Encoding: UTF-8
 LazyData: true
 Suggests: 

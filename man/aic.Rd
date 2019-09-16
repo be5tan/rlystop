@@ -9,6 +9,8 @@ aic(m, Y, lambda, delta, alphaLoss = -1, filt = c("cutoff", "landw"))
 \arguments{
 \item{m}{Integer stopping index.}
 
+\item{Y}{Numeric vector of observed data.}
+
 \item{lambda}{Vector of decreasing, strictly positive entries of the
 diagonal design matrix.}
 
