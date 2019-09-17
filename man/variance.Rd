@@ -19,9 +19,9 @@ diagonal design matrix.}
 \item{filt}{Character string giving the filter to be used.}
 }
 \value{
-Returns all values of the variancee in a double vector.
+Returns the value of the variancee at index \code{m}.
 }
 \description{
-Computes the variance of the filter estimator a given diagonal design
-matrix \code{lambda} and noise level delta.
+Computes the variance of the \code{m}-th filter estimator, a given diagonal
+design matrix \code{lambda} and noise level delta.
 }

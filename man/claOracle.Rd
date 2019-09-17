@@ -20,8 +20,8 @@ diagonal design matrix.}
 one of "cutoff".}
 }
 \value{
-Returns the classical oracle time as an integer.
+Returns the classical oracle index as an integer.
 }
 \description{
-Computes the classical oracle time.
+Computes the classical oracle index.
 }

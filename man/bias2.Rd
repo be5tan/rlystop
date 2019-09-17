@@ -22,6 +22,6 @@ diagonal design matrix.}
 Returns the value of the squared bias at index \code{m}.
 }
 \description{
-Computes the squared bias of the filter estimator a given diagonal design
-matrix \code{lambda} and signal ' \code{mu}.
+Computes the squared bias of the \code{m}-th filter estimator, a given
+diagonal design matrix \code{lambda} and signal \code{mu}.
 }

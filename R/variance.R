@@ -1,8 +1,8 @@
 variance <- function(m, lambda, delta, alpha = - 1, filt = c("cutoff", "landw")) {
   #' Variance
   #' 
-  #' Computes the variance of the filter estimator a given diagonal design
-  #' matrix \code{lambda} and noise level delta.
+  #' Computes the variance of the \code{m}-th filter estimator, a given diagonal
+  #' design matrix \code{lambda} and noise level delta.
   #'
   #' @param m Integer stopping index.
   #' @param lambda Vector of decreasing, strictly positive entries of the
@@ -11,7 +11,7 @@ variance <- function(m, lambda, delta, alpha = - 1, filt = c("cutoff", "landw"))
   #' @param alpha Numeric smoothing parameter.
   #' @param filt Character string giving the filter to be used.
   #'
-  #' @return Returns all values of the variancee in a double vector.
+  #' @return Returns the value of the variancee at index \code{m}.
   #'
   #' @export
   filt <- match.arg(filt)

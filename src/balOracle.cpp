@@ -3,7 +3,7 @@ using namespace Rcpp;
 
 //' Balanced oracle
 //'
-//' Computes the balanced oracle time.
+//' Computes the balanced oracle index.
 //'
 //' @param lambda Vector of decreasing, strictly positive entries of the
 //'   diagonal design matrix.
@@ -12,7 +12,7 @@ using namespace Rcpp;
 //' @param alpha Numeric smoothing parameter.
 //' @param filt Character string giving the filter to be used.
 //'
-//' @return Returns the strong balanced oracle time as an integer.
+//' @return Returns the strong balanced oracle index as an integer.
 //'
 //' @export
 // [[Rcpp::export]]

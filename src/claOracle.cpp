@@ -3,7 +3,7 @@ using namespace Rcpp;
 
 //' Classical oracle
 //'
-//' Computes the classical oracle time.
+//' Computes the classical oracle index.
 //'
 //' @param lambda Vector of decreasing, strictly positive entries of the
 //'   diagonal design matrix.
@@ -13,7 +13,7 @@ using namespace Rcpp;
 //'   one of "cutoff".
 //' @param alpha Numeric smoothing parameter.
 //'
-//' @return Returns the classical oracle time as an integer.
+//' @return Returns the classical oracle index as an integer.
 //'
 //' @export
 // [[Rcpp::export]]

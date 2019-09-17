@@ -3,7 +3,7 @@
 
 #' Balanced oracle
 #'
-#' Computes the balanced oracle time.
+#' Computes the balanced oracle index.
 #'
 #' @param lambda Vector of decreasing, strictly positive entries of the
 #'   diagonal design matrix.
@@ -12,7 +12,7 @@
 #' @param alpha Numeric smoothing parameter.
 #' @param filt Character string giving the filter to be used.
 #'
-#' @return Returns the strong balanced oracle time as an integer.
+#' @return Returns the strong balanced oracle index as an integer.
 #'
 #' @export
 balOracle <- function(lambda, mu, delta, alpha = -1.0, filt = "cutoff") {
@@ -21,7 +21,7 @@ balOracle <- function(lambda, mu, delta, alpha = -1.0, filt = "cutoff") {
 
 #' Classical oracle
 #'
-#' Computes the classical oracle time.
+#' Computes the classical oracle index.
 #'
 #' @param lambda Vector of decreasing, strictly positive entries of the
 #'   diagonal design matrix.
@@ -31,7 +31,7 @@ balOracle <- function(lambda, mu, delta, alpha = -1.0, filt = "cutoff") {
 #'   one of "cutoff".
 #' @param alpha Numeric smoothing parameter.
 #'
-#' @return Returns the classical oracle time as an integer.
+#' @return Returns the classical oracle index as an integer.
 #'
 #' @export
 claOracle <- function(lambda, mu, delta, alpha = -1, filt = "cutoff") {

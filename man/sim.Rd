@@ -32,8 +32,7 @@ Returns a data frame containing \code{N} observations of the
  residual stopping rule and loss.
 }
 \description{
-Performs \code{num_run} simulation runs of the filter estimation
-procedure for a given design matrix \code{lambda}, a given signal
-\code{mu} and a given noise level \code{delta} and evaluates the loss and
-oracle quantities.
+Performs \code{N} simulation runs of the filter estimation procedure for a
+given design matrix \code{lambda}, a given signal \code{mu} and a given
+noise level \code{delta} and evaluates the loss and oracle quantities.
 }

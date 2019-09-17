@@ -19,8 +19,8 @@ diagonal design matrix.}
 \item{filt}{Character string giving the filter to be used.}
 }
 \value{
-Returns the strong balanced oracle time as an integer.
+Returns the strong balanced oracle index as an integer.
 }
 \description{
-Computes the balanced oracle time.
+Computes the balanced oracle index.
 }

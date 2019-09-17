@@ -1,8 +1,8 @@
 bias2 <- function(m, lambda, mu, alpha = - 1, filt = c("cutoff", "landw")) {
   #' Squared bias
   #' 
-  #' Computes the squared bias of the filter estimator a given diagonal design
-  #' matrix \code{lambda} and signal ' \code{mu}.
+  #' Computes the squared bias of the \code{m}-th filter estimator, a given
+  #' diagonal design matrix \code{lambda} and signal \code{mu}.
   #'
   #' @param m Integer stopping index.
   #' @param lambda Vector of decreasing, strictly positive entries of the

@@ -2,10 +2,9 @@ sim <- function (N, lambda, mu, delta, alpha, kappa, filt =
                  c("cutoff", "landw"), m0 = 0, alphaLoss = - 1) {
   #' Monte Carlo simulation for the filter estimation
   #' 
-  #' Performs \code{num_run} simulation runs of the filter estimation
-  #' procedure for a given design matrix \code{lambda}, a given signal
-  #' \code{mu} and a given noise level \code{delta} and evaluates the loss and
-  #' oracle quantities.
+  #' Performs \code{N} simulation runs of the filter estimation procedure for a
+  #' given design matrix \code{lambda}, a given signal \code{mu} and a given
+  #' noise level \code{delta} and evaluates the loss and oracle quantities.
   #' 
   #' @param N Integer number of simulation runs.
   #' @param lambda Numeric vector of decreasing, strictly positive entries of
