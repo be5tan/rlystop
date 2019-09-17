@@ -39,11 +39,12 @@ sim <- function (N, lambda, mu, delta, alpha, kappa, filt =
         AIC[m] <- aic(m, Y, lambda, delta, alphaLoss, filt)
       }
       tau2Step <- which.min(AIC)
+      stoppingTime[iter] <- tau2Step
       muHat <- fEst(tau2Step, Y, lambda, filt)
     } else {
       muHat <- fEst(tau, Y, lambda, filt)
+      stoppingTime[iter] <- tau
     }
-    stoppingTime[iter] <- tau
     loss[iter] <- sum(lambda^(2 + 2 * alphaLoss) * (muHat - mu)^2)
   }
 

@@ -17,7 +17,10 @@ variance <- function(m, lambda, delta, alpha = - 1, filt = c("cutoff", "landw"))
   filt <- match.arg(filt)
 
   if (filt == "cutoff") {
-    Vm <- sum(lambda[1:m]^(2 * alpha)) * delta^2
+    Vm <- 0 
+    if (m > 0) {
+      Vm <- sum(lambda[1:m]^(2 * alpha)) * delta^2
+    }
   }
 
   if (filt == "landw") {

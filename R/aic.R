@@ -11,12 +11,14 @@ aic <- function(m, Y, lambda, delta, alphaLoss = - 1, filt = c("cutoff", "landw"
   #' @param alphaLoss Numeric smoothing parameter for the loss.
   #' @param filt Character string giving the filter to be used.
   #'
-  #' @return Returns the value of the squared bias at index \code{m}.
+  #' @return Returns the value of the AIC at index \code{m}.
   #'
   #' @export
   filt <- match.arg(filt)
 
   muHat <- fEst(m, Y, lambda, filt)
-  rss <- sum(lambda^(2 + 2 * alphaLoss) * (Y - lambda * muHat)^2)
+  # rss <- sum(lambda^(2 + 2 * alphaLoss) * (Y - lambda * muHat)^2)
+  rss <- - sum(lambda[1:m]^(2 * alphaLoss) * Y[1:m]^2)
   aic <- rss + 2 * variance(m, lambda, delta, alphaLoss, filt)
+  return(aic)
 }

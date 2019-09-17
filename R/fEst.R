@@ -18,7 +18,9 @@ fEst <- function (m, Y, lambda, filt = c("cutoff", "landw")) {
   if (filt == "cutoff") {
     D <- length(Y)
     muHat <- rep(0, D)
-    muHat[1:m] <- Y[1:m] / lambda[1:m]
+    if (m > 0) {
+      muHat[1:m] <- Y[1:m] / lambda[1:m]
+    }
   }
 
   if(filt == "landw") {

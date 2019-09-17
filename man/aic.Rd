@@ -21,7 +21,7 @@ diagonal design matrix.}
 \item{filt}{Character string giving the filter to be used.}
 }
 \value{
-Returns the value of the squared bias at index \code{m}.
+Returns the value of the AIC at index \code{m}.
 }
 \description{
 Computes the AIC of the \code{m}-th filter estimator.
