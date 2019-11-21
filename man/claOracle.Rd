@@ -12,12 +12,14 @@ diagonal design matrix.}
 
 \item{mu}{Vector valued input signal.}
 
-\item{delta}{Strictly positive level of random noise.}
+\item{delta}{Numeric noise level.}
 
-\item{alpha}{Numeric smoothing parameter.}
+\item{alpha}{Numeric smoothing parameter. \code{alpha} = -1 gives
+the strong classical oracle. \code{alpha} = 0 gives the weak classical
+oracle.}
 
-\item{filt}{Character string giving the filter to be used. This must match
-one of "cutoff".}
+\item{filt}{Character string designating the filter to be used. filt should
+be one of "cutoff" or "landw".}
 }
 \value{
 Returns the classical oracle index as an integer.

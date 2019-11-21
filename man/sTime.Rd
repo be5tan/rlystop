@@ -14,9 +14,10 @@ diagonal design matrix.}
 
 \item{alpha}{Numeric smoothing index for the residuals.}
 
-\item{kappa}{Strictly positive stopping value.}
+\item{kappa}{Numeric stopping value.}
 
-\item{filt}{Character string giving the filter to be used.}
+\item{filt}{Character string designating the filter to be used. filt should
+be one of "cutoff" or "landw".}
 }
 \value{
 Returns the integer value of the smoothed residual based stopping

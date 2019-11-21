@@ -12,11 +12,14 @@ diagonal design matrix.}
 
 \item{mu}{Vector valued input signal.}
 
-\item{delta}{Strictly positive level of random noise.}
+\item{delta}{Numeric noise level.}
 
-\item{alpha}{Numeric smoothing parameter.}
+\item{alpha}{Numeric smoothing parameter. \code{alpha} = -1 gives
+the strong balanced oracle. \code{alpha} = 0 gives the weak balanced
+oracle.}
 
-\item{filt}{Character string giving the filter to be used.}
+\item{filt}{Character string designating the filter to be used. filt should
+be one of "cutoff" or "landw".}
 }
 \value{
 Returns the strong balanced oracle index as an integer.

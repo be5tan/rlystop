@@ -10,8 +10,9 @@ using namespace Rcpp;
 //' @param lambda Numeric vector of decreasing, strictly positive entries of the
 //'   diagonal design matrix.
 //' @param alpha Numeric smoothing index for the residuals.
-//' @param kappa Strictly positive stopping value.
-//' @param filt Character string giving the filter to be used.
+//' @param kappa Numeric stopping value.
+//' @param filt Character string designating the filter to be used. filt should
+//'   be one of "cutoff" or "landw".
 //'
 //' @return Returns the integer value of the smoothed residual based stopping
 //'   time.

@@ -8,7 +8,8 @@ fEst <- function (m, Y, lambda, filt = c("cutoff", "landw")) {
   #' @param Y Numeric vector of observed data.
   #' @param lambda Numeric vector of decreasing, strictly positive entries of
   #'   the diagonal design matrix.
-  #' @param filt Character string giving the filter to be used.
+  #' @param filt Character string designating the filter to be used. filt should
+  #'   be one of "cutoff" or "landw".
   #'
   #' @return Returns a numeric vector estimating the underlying signal.
   #'

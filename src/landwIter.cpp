@@ -12,6 +12,7 @@ using namespace Rcpp;
 //'
 //' @return Returns the m-th iterate of the Landweber iteration.
 //'
+//' @export
 // [[Rcpp::export]]
 NumericVector landw(int m, NumericVector Y, NumericVector lambda)
 {

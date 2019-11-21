@@ -14,7 +14,8 @@ fEst(m, Y, lambda, filt = c("cutoff", "landw"))
 \item{lambda}{Numeric vector of decreasing, strictly positive entries of
 the diagonal design matrix.}
 
-\item{filt}{Character string giving the filter to be used.}
+\item{filt}{Character string designating the filter to be used. filt should
+be one of "cutoff" or "landw".}
 }
 \value{
 Returns a numeric vector estimating the underlying signal.

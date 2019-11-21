@@ -8,8 +8,10 @@ aic <- function(m, Y, lambda, delta, alphaLoss = - 1, filt = c("cutoff", "landw"
   #' @param lambda Vector of decreasing, strictly positive entries of the
   #'   diagonal design matrix.
   #' @param delta Numeric noise level.
-  #' @param alphaLoss Numeric smoothing parameter for the loss.
-  #' @param filt Character string giving the filter to be used.
+  #' @param alphaLoss Numeric smoothing parameter for the loss. \code{alpha} =
+  #'   -1 gives the strong loss. \code{alpha} = 0 gives the weak loss. 
+  #' @param filt Character string designating the filter to be used. filt should
+  #'   be one of "cutoff" or "landw".
   #'
   #' @return Returns the value of the AIC at index \code{m}.
   #'

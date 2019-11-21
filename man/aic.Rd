@@ -16,9 +16,11 @@ diagonal design matrix.}
 
 \item{delta}{Numeric noise level.}
 
-\item{alphaLoss}{Numeric smoothing parameter for the loss.}
+\item{alphaLoss}{Numeric smoothing parameter for the loss. \code{alpha} =
+-1 gives the strong loss. \code{alpha} = 0 gives the weak loss.}
 
-\item{filt}{Character string giving the filter to be used.}
+\item{filt}{Character string designating the filter to be used. filt should
+be one of "cutoff" or "landw".}
 }
 \value{
 Returns the value of the AIC at index \code{m}.

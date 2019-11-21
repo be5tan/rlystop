@@ -8,9 +8,12 @@
 #' @param lambda Vector of decreasing, strictly positive entries of the
 #'   diagonal design matrix.
 #' @param mu Vector valued input signal.
-#' @param delta Strictly positive level of random noise.
-#' @param alpha Numeric smoothing parameter.
-#' @param filt Character string giving the filter to be used.
+#' @param delta Numeric noise level.
+#' @param alpha Numeric smoothing parameter. \code{alpha} = -1 gives
+#'   the strong balanced oracle. \code{alpha} = 0 gives the weak balanced
+#'   oracle. 
+#' @param filt Character string designating the filter to be used. filt should
+#'   be one of "cutoff" or "landw".
 #'
 #' @return Returns the strong balanced oracle index as an integer.
 #'
@@ -26,10 +29,12 @@ balOracle <- function(lambda, mu, delta, alpha = -1.0, filt = "cutoff") {
 #' @param lambda Vector of decreasing, strictly positive entries of the
 #'   diagonal design matrix.
 #' @param mu Vector valued input signal.
-#' @param delta Strictly positive level of random noise.
-#' @param filt Character string giving the filter to be used. This must match
-#'   one of "cutoff".
-#' @param alpha Numeric smoothing parameter.
+#' @param delta Numeric noise level.
+#' @param alpha Numeric smoothing parameter. \code{alpha} = -1 gives
+#'   the strong classical oracle. \code{alpha} = 0 gives the weak classical
+#'   oracle. 
+#' @param filt Character string designating the filter to be used. filt should
+#'   be one of "cutoff" or "landw".
 #'
 #' @return Returns the classical oracle index as an integer.
 #'
@@ -49,6 +54,7 @@ claOracle <- function(lambda, mu, delta, alpha = -1, filt = "cutoff") {
 #'
 #' @return Returns the m-th iterate of the Landweber iteration.
 #'
+#' @export
 landw <- function(m, Y, lambda) {
     .Call(`_rlystop_landw`, m, Y, lambda)
 }
@@ -62,8 +68,9 @@ landw <- function(m, Y, lambda) {
 #' @param lambda Numeric vector of decreasing, strictly positive entries of the
 #'   diagonal design matrix.
 #' @param alpha Numeric smoothing index for the residuals.
-#' @param kappa Strictly positive stopping value.
-#' @param filt Character string giving the filter to be used.
+#' @param kappa Numeric stopping value.
+#' @param filt Character string designating the filter to be used. filt should
+#'   be one of "cutoff" or "landw".
 #'
 #' @return Returns the integer value of the smoothed residual based stopping
 #'   time.

@@ -1,7 +1,7 @@
 context("Bias variance decomposition")
 library(rlystop)
 
-test_that("Bias-variance correctly computes oracle quantities for cut-off", {
+test_that("Bias-variance correctly computes oracle quantities for cut-off estimators", {
   # Defining signals
   D <- 1000
   index <- seq(1, D, 1)
@@ -62,7 +62,7 @@ test_that("Bias-variance correctly computes oracle quantities for cut-off", {
   expect_equal(B2_rough_1[m] <= V_1[m], TRUE)
 })
 
-test_that("Bias-variance correctly computes oracle quantities for Landweber", {
+test_that("Bias-variance correctly computes oracle quantities for Landweber iteration", {
   # Defining signals
   D <- 2000
   index <- seq(1, D, 1)

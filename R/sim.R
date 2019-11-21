@@ -10,12 +10,14 @@ sim <- function (N, lambda, mu, delta, alpha, kappa, filt =
   #' @param lambda Numeric vector of decreasing, strictly positive entries of
   #'   the diagonal design matrix.
   #' @param mu Numeric vector valued input signal.
-  #' @param delta Numeric positive level of random noise.
+  #' @param delta Numeric noise level.
   #' @param alpha Numeric smoothing index for the residuals.
-  #' @param kappa Numeric positive critical stopping value.
-  #' @param filt Character string giving the filter to be used.
+  #' @param kappa Numeric critical stopping value.
+  #' @param filt Character string designating the filter to be used. filt should
+  #'   be one of "cutoff" or "landw".
   #' @param m0 Integer cut-off index for the two-step procudure.
-  #' @param alphaLoss Numeric smoothing index for the loss. 
+  #' @param alphaLoss Numeric smoothing parameter for the loss. \code{alpha} =
+  #'   -1 gives the strong loss. \code{alpha} = 0 gives the weak loss. 
   #'
   #' @return Returns a data frame containing \code{N} observations of the
   #'  residual stopping rule and loss.

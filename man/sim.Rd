@@ -15,17 +15,19 @@ the diagonal design matrix.}
 
 \item{mu}{Numeric vector valued input signal.}
 
-\item{delta}{Numeric positive level of random noise.}
+\item{delta}{Numeric noise level.}
 
 \item{alpha}{Numeric smoothing index for the residuals.}
 
-\item{kappa}{Numeric positive critical stopping value.}
+\item{kappa}{Numeric critical stopping value.}
 
-\item{filt}{Character string giving the filter to be used.}
+\item{filt}{Character string designating the filter to be used. filt should
+be one of "cutoff" or "landw".}
 
 \item{m0}{Integer cut-off index for the two-step procudure.}
 
-\item{alphaLoss}{Numeric smoothing index for the loss.}
+\item{alphaLoss}{Numeric smoothing parameter for the loss. \code{alpha} =
+-1 gives the strong loss. \code{alpha} = 0 gives the weak loss.}
 }
 \value{
 Returns a data frame containing \code{N} observations of the

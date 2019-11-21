@@ -14,9 +14,11 @@ diagonal design matrix.}
 
 \item{delta}{Numeric noise level.}
 
-\item{alpha}{Numeric smoothing parameter.}
+\item{alpha}{Numeric smoothing parameter. \code{alpha} = -1 gives
+the strong bias. \code{alpha} = 0 gives the weak bias.}
 
-\item{filt}{Character string giving the filter to be used.}
+\item{filt}{Character string designating the filter to be used. filt should
+be one of "cutoff" or "landw".}
 }
 \value{
 Returns the value of the variancee at index \code{m}.

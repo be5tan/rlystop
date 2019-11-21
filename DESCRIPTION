@@ -1,10 +1,17 @@
 Package: rlystop
 Type: Package
 Title: Early stopping for statistical inverse problems
-Version: 0.1.0
-Authors@R: person("Bernhard", "Stankewitz", email = "bernhard.stankewitz@posteo.de", role = c("aut", "cre"))
-Description: Implements the estimation procedures from three different papers on
-    early stopping for statistical inverse problems.
+Version: 0.9.0
+Authors@R: person("Bernhard", "Stankewitz", email = "bernhard.stankewitz@math.hu-berlin.de", role = c("aut", "cre"))
+Description: This package implements early stopping procedures based on the
+  residuals for cut-off estimation and gradient descent. For the theoretical
+  results see:
+  Gilles Blanchard, Marc Hoffmann, Markus Reiß. Early stopping for statistical
+  inverse problems via truncated SVD estimation. https://arxiv.org/abs/1710.07278.
+  Gilles Blanchard, Marc Hoffmann, Markus Reiß. Optimal adaptation for early
+  stopping in statistical inverse problems. https://arxiv.org/abs/1606.07702.
+  Bernhard Stankewitz. Smoothed residual stopping for statistical inverse
+  problems via truncated SVD estimation. https://arxiv.org/abs/1909.13702.
 License: GPL-2
 Encoding: UTF-8
 LazyData: true

@@ -8,10 +8,12 @@ using namespace Rcpp;
 //' @param lambda Vector of decreasing, strictly positive entries of the
 //'   diagonal design matrix.
 //' @param mu Vector valued input signal.
-//' @param delta Strictly positive level of random noise.
-//' @param filt Character string giving the filter to be used. This must match
-//'   one of "cutoff".
-//' @param alpha Numeric smoothing parameter.
+//' @param delta Numeric noise level.
+//' @param alpha Numeric smoothing parameter. \code{alpha} = -1 gives
+//'   the strong classical oracle. \code{alpha} = 0 gives the weak classical
+//'   oracle. 
+//' @param filt Character string designating the filter to be used. filt should
+//'   be one of "cutoff" or "landw".
 //'
 //' @return Returns the classical oracle index as an integer.
 //'
